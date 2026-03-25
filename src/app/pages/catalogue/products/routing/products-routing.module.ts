@@ -9,6 +9,7 @@ import { ProductToCategoryComponent } from '../product-to-category/product-to-ca
 import { ProductsImagesComponent } from './../products-images/products-images.component';
 import { ProductDiscountComponent } from '../product-discount/product-discount.component';
 import { ProductOrderingComponent } from '../product-ordering/product-ordering.component';
+import { ReviewsListComponent } from '../reviews/reviews-list/reviews-list.component';
 import { ProductAttributesComponent } from '../attribute/product-attributes/product-attributes.component';
 import { ProductProperties } from '../property/list/product-property.component';
 
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'product-ordering',
         component: ProductOrderingComponent
+      },
+      {
+        path: 'reviews',
+        component: ReviewsListComponent
       },
       {
         path: 'product/:id',
