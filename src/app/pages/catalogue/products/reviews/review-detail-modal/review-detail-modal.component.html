@@ -1,0 +1,56 @@
+<nb-card>
+  <nb-card-header>
+    <h5>Review Details</h5>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="review-info">
+      <div class="info-row">
+        <strong>Product:</strong> {{ review.productName }}
+      </div>
+      <div class="info-row">
+        <strong>Customer:</strong> {{ review.customer.firstName }} {{ review.customer.lastName }}
+      </div>
+      <div class="info-row">
+        <strong>Rating:</strong> {{ review.rating }} ⭐
+      </div>
+      <div class="info-row">
+        <strong>Date:</strong> {{ review.date }}
+      </div>
+      <div class="info-row">
+        <strong>Review:</strong>
+        <p class="review-description">{{ review.description }}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="reply-section">
+      <h6>Merchant Reply</h6>
+      
+      <div *ngIf="review.reply && !isEditing" class="existing-reply">
+        <p><strong>{{ review.reply.merchantName }}</strong> replied on {{ review.reply.date }}:</p>
+        <p class="reply-text">{{ review.reply.comment }}</p>
+        <div class="reply-actions">
+          <button nbButton size="small" status="info" (click)="enableEdit()">Edit</button>
+          <button nbButton size="small" status="danger" (click)="deleteReply()">Delete</button>
+        </div>
+      </div>
+
+      <div *ngIf="!review.reply || isEditing" class="reply-form">
+        <textarea 
+          nbInput 
+          fullWidth 
+          placeholder="Enter your reply..." 
+          [(ngModel)]="replyComment"
+          rows="4"
+        ></textarea>
+        <div class="form-actions">
+          <button nbButton status="primary" (click)="saveReply()" [disabled]="loading">
+            {{ loading ? 'Saving...' : (review.reply ? 'Update Reply' : 'Post Reply') }}
+          </button>
+          <button nbButton status="basic" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
