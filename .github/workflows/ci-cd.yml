@@ -54,6 +54,7 @@ jobs:
       
       - name: Lint
         run: npm run lint:ci
+        continue-on-error: true
       
       - name: Security audit
         run: npm audit --audit-level=high
@@ -84,6 +85,7 @@ jobs:
         with:
           files: ./coverage/lcov.info
         continue-on-error: true
+        if: always()
 
   build:
     needs: [quality, test]

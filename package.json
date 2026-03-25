@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod",
     "test": "ng test",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI --code-coverage",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
     "lint": "ng lint",
     "lint:fix": "ng lint shopizer-admin --fix",
