@@ -74,7 +74,8 @@ export class ReviewDetailModalComponent implements OnInit {
           this.ref.close(true);
         },
         (error) => {
-          this.toastrService.danger('Failed to delete reply', 'Error');
+          console.error('Delete reply error:', error);
+          this.toastrService.danger('Failed to delete reply: ' + (error.error?.message || error.message || 'Unknown error'), 'Error');
           this.loading = false;
         }
       );
