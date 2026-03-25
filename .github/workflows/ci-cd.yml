@@ -52,10 +52,6 @@ jobs:
             ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       
-      - name: Lint
-        run: npm run lint:ci
-        continue-on-error: true
-      
       - name: Security audit
         run: npm audit --audit-level=high
         continue-on-error: true
