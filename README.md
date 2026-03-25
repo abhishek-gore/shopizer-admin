@@ -1,5 +1,7 @@
 # Shopizer Administration (shopizer-admin) Angular web app
 
+[![CI/CD Pipeline](https://github.com/abhishek-gore/shopizer-admin/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/abhishek-gore/shopizer-admin/actions/workflows/ci-cd.yml)
+
 ## Tested with node v12.22.7
 
 Requires Angular cli installed (npm install -g @angular/cli@13.3.x)
