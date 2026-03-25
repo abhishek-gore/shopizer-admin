@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-header>
+    <h5>Product Reviews</h5>
+  </nb-card-header>
+  <nb-card-body>
+    <div *ngIf="loading" class="text-center">
+      <nb-spinner></nb-spinner>
+    </div>
+
+    <table *ngIf="!loading && reviews.length > 0" class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Customer</th>
+          <th>Rating</th>
+          <th>Review</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let review of reviews">
+          <td>{{ review.productName }}</td>
+          <td>{{ review.customer.firstName }} {{ review.customer.lastName }}</td>
+          <td>
+            <span class="rating">{{ review.rating }} ⭐</span>
+          </td>
+          <td>
+            <span class="review-text">{{ review.description | slice:0:50 }}{{ review.description.length > 50 ? '...' : '' }}</span>
+          </td>
+          <td>{{ review.date }}</td>
+          <td>
+            <span class="badge" [ngClass]="getReplyStatusClass(review)">
+              {{ getReplyStatus(review) }}
+            </span>
+          </td>
+          <td>
+            <button nbButton size="small" status="primary" (click)="openReplyModal(review)">
+              {{ review.reply ? 'View/Edit' : 'Reply' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loading && reviews.length === 0" class="text-center">
+      <p>No reviews found</p>
+    </div>
+  </nb-card-body>
+</nb-card>

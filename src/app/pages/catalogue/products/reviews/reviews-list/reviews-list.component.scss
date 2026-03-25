@@ -1,0 +1,40 @@
+.review-text {
+  max-width: 300px;
+  display: inline-block;
+}
+
+.rating {
+  font-weight: bold;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.badge-success {
+  background-color: #00d68f;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffaa00;
+  color: white;
+}
+
+.table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.table th {
+  font-weight: 600;
+  border-bottom: 2px solid #edf1f7;
+  padding: 0.75rem;
+}
+
+.table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #edf1f7;
+}
