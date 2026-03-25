@@ -209,6 +209,13 @@ export const MENU_ITEMS: MenuItem[] = [
             link: '/pages/catalogue/products/product-ordering',
             hidden: false,
             guards: [IsAdminRetail]
+          },
+          {
+            title: 'COMPONENTS.PRODUCT_REVIEWS',
+            key: 'COMPONENTS.PRODUCT_REVIEWS',
+            link: '/pages/catalogue/products/reviews',
+            hidden: false,
+            guards: [IsAdminRetail]
           }
         ],
       },

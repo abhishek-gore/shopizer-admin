@@ -30,6 +30,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NbDialogModule } from '@nebular/theme';
 import { ProductDiscountComponent } from './product-discount/product-discount.component';
 import { ProductOrderingComponent } from './product-ordering/product-ordering.component';
+import { ReviewsListComponent } from './reviews/reviews-list/reviews-list.component';
+import { ReviewDetailModalComponent } from './reviews/review-detail-modal/review-detail-modal.component';
 
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -61,8 +63,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ProductPropertyForm,
     ProductDiscountComponent,
     ProductOrderingComponent,
+    ReviewsListComponent,
+    ReviewDetailModalComponent,
   ],
-  entryComponents: [AvailableButtonComponent, AttributeFormComponent, ProductPropertyForm],
+  entryComponents: [AvailableButtonComponent, AttributeFormComponent, ProductPropertyForm, ReviewDetailModalComponent],
   imports: [
     ProductsRoutingModule,
     InventoryRoutingModule,
