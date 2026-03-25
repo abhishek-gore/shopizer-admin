@@ -80,7 +80,6 @@ jobs:
   build:
     needs: [quality, test]
     runs-on: ubuntu-latest
-    if: false  # Disabled until AWS secrets are configured
     strategy:
       matrix:
         environment: [dev, staging, prod]
@@ -121,7 +120,7 @@ jobs:
           retention-days: 7
 
   deploy-preview:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && false  # Disabled until AWS secrets configured
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -157,7 +156,7 @@ jobs:
             })
 
   deploy:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && false  # Disabled until AWS secrets configured
     needs: build
     runs-on: ubuntu-latest
     steps:
