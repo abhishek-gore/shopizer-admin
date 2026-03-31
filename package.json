@@ -1,8 +1,5 @@
 {
   "name": "shopizer-admin",
-  "resolutions": {
-    "@types/ws": "7.4.7"
-  },
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
