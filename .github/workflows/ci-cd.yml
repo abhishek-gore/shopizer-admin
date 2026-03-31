@@ -106,9 +106,9 @@ jobs:
       - name: Check bundle size
         run: |
           SIZE=$(du -sb dist | cut -f1)
-          MAX_SIZE=36700160
+          MAX_SIZE=15728640
           if [ $SIZE -gt $MAX_SIZE ]; then
-            echo "Bundle exceeds 35MB"
+            echo "Bundle exceeds 15MB"
             exit 1
           fi
       
