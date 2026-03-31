@@ -1,5 +1,8 @@
 {
   "name": "shopizer-admin",
+  "resolutions": {
+    "@types/ws": "7.4.7"
+  },
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
@@ -114,6 +117,7 @@
     "@types/leaflet": "1.2.3",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^12.20.36",
+    "@types/ws": "7.4.7",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^6.0.0",
