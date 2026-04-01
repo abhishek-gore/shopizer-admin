@@ -19,12 +19,12 @@ describe('ReviewDetailModalComponent', () => {
     rating: 4.5,
     description: 'Great product',
     date: '2026-03-25',
-    reply: null
+    reply: null,
   };
 
   const mockReviewWithReply = {
     ...mockReview,
-    reply: { id: 1, comment: 'Thank you!', merchantName: 'Store', date: '2026-03-25' }
+    reply: { id: 1, comment: 'Thank you!', merchantName: 'Store', date: '2026-03-25' },
   };
 
   beforeEach(async () => {
@@ -38,8 +38,8 @@ describe('ReviewDetailModalComponent', () => {
       providers: [
         { provide: ReviewService, useValue: reviewServiceSpy },
         { provide: NbDialogRef, useValue: dialogRefSpy },
-        { provide: NbToastrService, useValue: toastrServiceSpy }
-      ]
+        { provide: NbToastrService, useValue: toastrServiceSpy },
+      ],
     }).compileComponents();
 
     reviewService = TestBed.inject(ReviewService) as jasmine.SpyObj<ReviewService>;
@@ -59,7 +59,7 @@ describe('ReviewDetailModalComponent', () => {
   it('should initialize with review data', () => {
     component.review = mockReview;
     fixture.detectChanges();
-    
+
     expect(component.replyComment).toBe('');
     expect(component.isEditing).toBe(false);
   });
@@ -67,16 +67,16 @@ describe('ReviewDetailModalComponent', () => {
   it('should initialize with existing reply comment', () => {
     component.review = mockReviewWithReply;
     fixture.detectChanges();
-    
+
     expect(component.replyComment).toBe('Thank you!');
   });
 
   it('should show warning when saving empty reply', () => {
     component.review = mockReview;
     component.replyComment = '';
-    
+
     component.saveReply();
-    
+
     expect(toastrService.warning).toHaveBeenCalledWith('Please enter a reply', 'Warning');
     expect(reviewService.createReply).not.toHaveBeenCalled();
   });
@@ -85,9 +85,9 @@ describe('ReviewDetailModalComponent', () => {
     component.review = mockReview;
     component.replyComment = 'New reply';
     reviewService.createReply.and.returnValue(of({ id: 1, comment: 'New reply' }));
-    
+
     component.saveReply();
-    
+
     expect(reviewService.createReply).toHaveBeenCalledWith(1, 'New reply');
     expect(toastrService.success).toHaveBeenCalledWith('Reply posted successfully', 'Success');
     expect(dialogRef.close).toHaveBeenCalledWith(true);
@@ -97,9 +97,9 @@ describe('ReviewDetailModalComponent', () => {
     component.review = mockReview;
     component.replyComment = 'New reply';
     reviewService.createReply.and.returnValue(throwError({ error: 'Error' }));
-    
+
     component.saveReply();
-    
+
     expect(toastrService.danger).toHaveBeenCalledWith('Failed to post reply', 'Error');
     expect(component.loading).toBe(false);
   });
@@ -108,9 +108,9 @@ describe('ReviewDetailModalComponent', () => {
     component.review = mockReviewWithReply;
     component.replyComment = 'Updated reply';
     reviewService.updateReply.and.returnValue(of({}));
-    
+
     component.saveReply();
-    
+
     expect(reviewService.updateReply).toHaveBeenCalledWith(1, 1, 'Updated reply');
     expect(toastrService.success).toHaveBeenCalledWith('Reply updated successfully', 'Success');
     expect(dialogRef.close).toHaveBeenCalledWith(true);
@@ -120,9 +120,9 @@ describe('ReviewDetailModalComponent', () => {
     component.review = mockReviewWithReply;
     component.replyComment = 'Updated reply';
     reviewService.updateReply.and.returnValue(throwError({ error: 'Error' }));
-    
+
     component.saveReply();
-    
+
     expect(toastrService.danger).toHaveBeenCalledWith('Failed to update reply', 'Error');
     expect(component.loading).toBe(false);
   });
@@ -131,9 +131,9 @@ describe('ReviewDetailModalComponent', () => {
     component.review = mockReviewWithReply;
     reviewService.deleteReply.and.returnValue(of({}));
     spyOn(window, 'confirm').and.returnValue(true);
-    
+
     component.deleteReply();
-    
+
     expect(reviewService.deleteReply).toHaveBeenCalledWith(1, 1);
     expect(toastrService.success).toHaveBeenCalledWith('Reply deleted successfully', 'Success');
     expect(dialogRef.close).toHaveBeenCalledWith(true);
@@ -142,23 +142,23 @@ describe('ReviewDetailModalComponent', () => {
   it('should not delete reply if user cancels confirmation', () => {
     component.review = mockReviewWithReply;
     spyOn(window, 'confirm').and.returnValue(false);
-    
+
     component.deleteReply();
-    
+
     expect(reviewService.deleteReply).not.toHaveBeenCalled();
   });
 
   it('should enable edit mode', () => {
     component.isEditing = false;
-    
+
     component.enableEdit();
-    
+
     expect(component.isEditing).toBe(true);
   });
 
   it('should close modal on cancel', () => {
     component.cancel();
-    
+
     expect(dialogRef.close).toHaveBeenCalledWith(false);
   });
 });

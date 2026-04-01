@@ -6,7 +6,7 @@ import { ReviewDetailModalComponent } from '../review-detail-modal/review-detail
 @Component({
   selector: 'ngx-reviews-list',
   templateUrl: './reviews-list.component.html',
-  styleUrls: ['./reviews-list.component.scss']
+  styleUrls: ['./reviews-list.component.scss'],
 })
 export class ReviewsListComponent implements OnInit {
   reviews: any[] = [];
@@ -15,7 +15,7 @@ export class ReviewsListComponent implements OnInit {
   constructor(
     private reviewService: ReviewService,
     private dialogService: NbDialogService,
-    private toastrService: NbToastrService
+    private toastrService: NbToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -32,13 +32,13 @@ export class ReviewsListComponent implements OnInit {
       (error) => {
         this.toastrService.danger('Failed to load reviews', 'Error');
         this.loading = false;
-      }
+      },
     );
   }
 
   openReplyModal(review: any): void {
     this.dialogService.open(ReviewDetailModalComponent, {
-      context: { review }
+      context: { review },
     }).onClose.subscribe((result) => {
       if (result) {
         this.loadReviews();

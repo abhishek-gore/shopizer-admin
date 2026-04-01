@@ -14,8 +14,8 @@ describe('ReviewService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         ReviewService,
-        { provide: CrudService, useValue: crudServiceSpy }
-      ]
+        { provide: CrudService, useValue: crudServiceSpy },
+      ],
     });
 
     service = TestBed.inject(ReviewService);
@@ -37,7 +37,7 @@ describe('ReviewService', () => {
     service.createReply(reviewId, comment);
     expect(crudService.post).toHaveBeenCalledWith(
       '/v1/private/products/reviews/1/reply',
-      { comment: 'Test reply' }
+      { comment: 'Test reply' },
     );
   });
 
@@ -48,7 +48,7 @@ describe('ReviewService', () => {
     service.updateReply(reviewId, replyId, comment);
     expect(crudService.put).toHaveBeenCalledWith(
       '/v1/private/products/reviews/1/reply/2',
-      { comment: 'Updated reply' }
+      { comment: 'Updated reply' },
     );
   });
 
