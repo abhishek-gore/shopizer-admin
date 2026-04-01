@@ -75,14 +75,16 @@ export class ElectricityService extends ElectricityData {
     340, 340, 340,
   ];
 
-  chartData: ElectricityChart[];
-
   constructor() {
     super();
     this.chartData = this.chartPoints.map((p, index) => ({
       label: (index % 5 === 3) ? `${Math.round(index / 5)}` : '',
       value: p,
     }));
+  }
+
+  chartData: ElectricityChart[];
+
   }
 
   getListData(): Observable<Electricity[]> {
