@@ -5,11 +5,11 @@ import { ReviewService } from '../services/review.service';
 @Component({
   selector: 'ngx-review-detail-modal',
   templateUrl: './review-detail-modal.component.html',
-  styleUrls: ['./review-detail-modal.component.scss']
+  styleUrls: ['./review-detail-modal.component.scss'],
 })
 export class ReviewDetailModalComponent implements OnInit {
   @Input() review: any;
-  
+
   replyComment = '';
   isEditing = false;
   loading = false;
@@ -17,7 +17,7 @@ export class ReviewDetailModalComponent implements OnInit {
   constructor(
     protected ref: NbDialogRef<ReviewDetailModalComponent>,
     private reviewService: ReviewService,
-    private toastrService: NbToastrService
+    private toastrService: NbToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class ReviewDetailModalComponent implements OnInit {
         (error) => {
           this.toastrService.danger('Failed to update reply', 'Error');
           this.loading = false;
-        }
+        },
       );
     } else {
       // Create new reply
@@ -59,7 +59,7 @@ export class ReviewDetailModalComponent implements OnInit {
         (error) => {
           this.toastrService.danger('Failed to post reply', 'Error');
           this.loading = false;
-        }
+        },
       );
     }
   }
@@ -77,7 +77,7 @@ export class ReviewDetailModalComponent implements OnInit {
           console.error('Delete reply error:', error);
           this.toastrService.danger('Failed to delete reply: ' + (error.error?.message || error.message || 'Unknown error'), 'Error');
           this.loading = false;
-        }
+        },
       );
     }
   }

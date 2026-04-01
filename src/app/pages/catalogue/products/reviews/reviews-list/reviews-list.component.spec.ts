@@ -20,7 +20,7 @@ describe('ReviewsListComponent', () => {
         rating: 4.5,
         description: 'Great product',
         date: '2026-03-25',
-        reply: null
+        reply: null,
       },
       {
         id: 2,
@@ -29,10 +29,10 @@ describe('ReviewsListComponent', () => {
         rating: 5.0,
         description: 'Excellent',
         date: '2026-03-24',
-        reply: { id: 1, comment: 'Thank you!', merchantName: 'Store', date: '2026-03-25' }
-      }
+        reply: { id: 1, comment: 'Thank you!', merchantName: 'Store', date: '2026-03-25' },
+      },
     ],
-    total: 2
+    total: 2,
   };
 
   beforeEach(async () => {
@@ -45,8 +45,8 @@ describe('ReviewsListComponent', () => {
       providers: [
         { provide: ReviewService, useValue: reviewServiceSpy },
         { provide: NbDialogService, useValue: dialogServiceSpy },
-        { provide: NbToastrService, useValue: toastrServiceSpy }
-      ]
+        { provide: NbToastrService, useValue: toastrServiceSpy },
+      ],
     }).compileComponents();
 
     reviewService = TestBed.inject(ReviewService) as jasmine.SpyObj<ReviewService>;
@@ -65,9 +65,9 @@ describe('ReviewsListComponent', () => {
 
   it('should load reviews on init', () => {
     reviewService.getReviews.and.returnValue(of(mockReviews));
-    
+
     fixture.detectChanges(); // triggers ngOnInit
-    
+
     expect(reviewService.getReviews).toHaveBeenCalled();
     expect(component.reviews.length).toBe(2);
     expect(component.loading).toBe(false);
@@ -75,9 +75,9 @@ describe('ReviewsListComponent', () => {
 
   it('should handle error when loading reviews fails', () => {
     reviewService.getReviews.and.returnValue(throwError({ error: 'Error' }));
-    
+
     fixture.detectChanges();
-    
+
     expect(toastrService.danger).toHaveBeenCalledWith('Failed to load reviews', 'Error');
     expect(component.loading).toBe(false);
   });
@@ -86,10 +86,10 @@ describe('ReviewsListComponent', () => {
     const mockDialogRef = { onClose: of(true) };
     dialogService.open.and.returnValue(mockDialogRef as any);
     reviewService.getReviews.and.returnValue(of(mockReviews));
-    
+
     const review = mockReviews.reviews[0];
     component.openReplyModal(review);
-    
+
     expect(dialogService.open).toHaveBeenCalled();
   });
 
@@ -121,11 +121,11 @@ describe('ReviewsListComponent', () => {
     const mockDialogRef = { onClose: of(true) };
     dialogService.open.and.returnValue(mockDialogRef as any);
     reviewService.getReviews.and.returnValue(of(mockReviews));
-    
+
     spyOn(component, 'loadReviews');
-    
+
     component.openReplyModal(mockReviews.reviews[0]);
-    
+
     expect(component.loadReviews).toHaveBeenCalled();
   });
 });

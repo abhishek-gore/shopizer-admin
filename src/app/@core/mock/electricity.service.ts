@@ -75,8 +75,6 @@ export class ElectricityService extends ElectricityData {
     340, 340, 340,
   ];
 
-  chartData: ElectricityChart[];
-
   constructor() {
     super();
     this.chartData = this.chartPoints.map((p, index) => ({
@@ -84,6 +82,8 @@ export class ElectricityService extends ElectricityData {
       value: p,
     }));
   }
+
+  chartData: ElectricityChart[];
 
   getListData(): Observable<Electricity[]> {
     return observableOf(this.listData);

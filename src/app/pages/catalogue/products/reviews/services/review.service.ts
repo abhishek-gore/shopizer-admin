@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CrudService } from '../../../../shared/services/crud.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReviewService {
 

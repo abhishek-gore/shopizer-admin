@@ -18,13 +18,13 @@ describe('AppComponent - Smoke Test', () => {
       imports: [
         RouterTestingModule,
         TranslateModule.forRoot(),
-        HttpClientTestingModule
+        HttpClientTestingModule,
       ],
       declarations: [AppComponent],
       providers: [
         { provide: ConfigService, useValue: mockConfigService },
-        TranslateService
-      ]
+        TranslateService,
+      ],
     }).compileComponents();
   });
 

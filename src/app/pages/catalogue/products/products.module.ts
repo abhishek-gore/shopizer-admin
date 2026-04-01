@@ -77,7 +77,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NgxSummernoteModule,
     NbDialogModule.forChild(),
     NgMultiSelectDropDownModule.forRoot(),
-    DragDropModule
+    DragDropModule,
 
   ],
 })
