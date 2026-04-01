@@ -85,8 +85,6 @@ export class ElectricityService extends ElectricityData {
 
   chartData: ElectricityChart[];
 
-  }
-
   getListData(): Observable<Electricity[]> {
     return observableOf(this.listData);
   }

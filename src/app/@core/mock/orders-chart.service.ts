@@ -167,6 +167,4 @@ export class OrdersChartService extends OrdersChartData {
   getOrdersChartData(period: string): OrdersChart {
     return this.data[period];
   }
-
-  private generateRandomData(nPoints: number): number[] {
 }
