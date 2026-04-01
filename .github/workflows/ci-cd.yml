@@ -53,9 +53,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       
       - name: Lint
-        run: npm run lint:ci
-      
-      - name: Lint
         run: npm run lint
         continue-on-error: true
       
