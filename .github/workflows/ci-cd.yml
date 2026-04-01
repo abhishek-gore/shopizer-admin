@@ -55,6 +55,10 @@ jobs:
       - name: Lint
         run: npm run lint:ci
       
+      - name: Lint
+        run: npm run lint
+        continue-on-error: true
+      
       - name: Security audit
         run: npm audit --audit-level=high
         continue-on-error: true
