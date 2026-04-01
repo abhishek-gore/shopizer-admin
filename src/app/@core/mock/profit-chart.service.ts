@@ -15,7 +15,7 @@ export class ProfitChartService extends ProfitChartData {
     '2018',
   ];
 
-  private data = { };
+  private data = {};
 
   constructor(private period: PeriodsService) {
     super();
@@ -24,6 +24,10 @@ export class ProfitChartService extends ProfitChartData {
       month: this.getDataForMonthPeriod(),
       year: this.getDataForYearPeriod(),
     };
+  }
+
+  getProfitChartData(period: string): ProfitChart {
+    return this.data[period];
   }
 
   private getDataForWeekPeriod(): ProfitChart {
@@ -66,12 +70,6 @@ export class ProfitChartService extends ProfitChartData {
   }
 
   private getRandomData(nPoints: number): number[] {
-    return Array.from(Array(nPoints)).map(() => {
-      return Math.round(Math.random() * 500);
-    });
-  }
-
-  getProfitChartData(period: string): ProfitChart {
-    return this.data[period];
+    return Array.from(Array(nPoints)).map(() => Math.round(Math.random() * 500));
   }
 }

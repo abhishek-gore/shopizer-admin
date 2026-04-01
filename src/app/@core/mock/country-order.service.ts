@@ -18,7 +18,7 @@ export class CountryOrderService extends CountryOrderData {
     return observableOf(this.countriesCategories);
   }
 
-  getCountriesCategoriesData(country: string): Observable<number[]> {
+  getCountriesCategoriesData(_country: string): Observable<number[]> {
     return observableOf(this.generateRandomData(this.countriesCategoriesLength));
   }
 
