@@ -159,3 +159,6 @@ jobs:
           git add artifacts/admin/dist
           git commit -m "Update admin artifact from build ${{ github.run_number }}" || echo "No changes"
           git push
+
+  deploy-preview:
+    if: github.event_name == 'pull_request' && false  # Disabled until AWS secrets configured
